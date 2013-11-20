@@ -22,7 +22,7 @@ package com.wyndhamjade.util.wicket.newrelic;
  * Implement this in the application's {@link org.apache.wicket.Session}
  * subclass to provide user and account name information to New Relic.
  *
- * @see NewRelicRequestCycleFactory
+ * @see NewRelicRequestCycleListener
  * @see com.newrelic.api.agent.NewRelic#setUserName
  * @see com.newrelic.api.agent.NewRelic#setAccountName
  */

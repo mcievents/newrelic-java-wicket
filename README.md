@@ -1,4 +1,6 @@
-# Wicket 1.4/New Relic integration
+# Wicket 1.5+/New Relic integration
+
+*For Wicket 1.4 support, see the `wicket-1.4` branch*
 
 [Wicket](http://wicket.apache.org) is a great Java web application framework. [New Relic](http://www.newrelic.com) is a great web application monitoring too. Two great tastes that taste great together.
 
@@ -12,24 +14,17 @@ This project aims to improve the New Relic/Wicket experience by enhancing the in
 
 ## Usage
 
-### NewRelicRequestCycleFactory
+### NewRelicRequestCycleListener
 
-This library provides a factory class to generate Wicket WebRequestCycle instances in order to send per-request data to New Relic.  To use this, instantiate a NewRelicRequestCycle factory in your application class's constructor.  Then override newRequestCycle to return a NewRelicRequestCycle for each request.  Like so:
+This library provides an `IRequestCycleListener` that sends per-request data to New Relic.  To use this, add an instance of `NewRelicRequestCycleListener` in your `WebApplication` subclass init() method.  Like so:
 
 ```java
 public class MyApplication extends WebApplication {
-    private final NewRelicRequestCycleFactory requestCycleFactory;
-
-    public MyApplication() {
-        this.requestCycleFactory = new NewRelicRequestCycleFactory(
-                "com.example.package");
-    }
-
     @Override
-    public RequestCycle newRequestCycle(final Request request,
-                                        final Response response) {
-        return requestCycleFactory.newRequestCycle(
-                this, (WebRequest) request, response);
+    public void init() {
+        super.init();
+        getRequestCycleListeners().add(
+            new NewRelicRequestCycleListener("com.example.package."));
     }
 }
 ```

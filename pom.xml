@@ -21,7 +21,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.wyndhamjade.util.wicket</groupId>
-    <artifactId>newrelic-java-wicket14</artifactId>
+    <artifactId>newrelic-java-wicket15</artifactId>
     <version>1.0</version>
 
     <name>Wicket/New Relic integration</name>
@@ -61,8 +61,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
+                    <source>1.6</source>
+                    <target>1.6</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -72,7 +72,8 @@
         <dependency>
             <groupId>org.apache.wicket</groupId>
             <artifactId>wicket</artifactId>
-            <version>1.4.22</version>
+            <version>1.5.10</version>
+            <type>pom</type>
         </dependency>
         <dependency>
             <groupId>com.newrelic.agent.java</groupId>
